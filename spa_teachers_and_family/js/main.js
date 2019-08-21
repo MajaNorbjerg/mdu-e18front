@@ -44,17 +44,47 @@ setDefaultPage();
 // ---------- Fetch data from data sources ---------- //
 
 /*
-Fetches json data from the file persons.json
+ Array of family members
 */
-fetch('json/persons.json')
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(json) {
-    console.log(json);
-    appendPersons(json);
-  });
+let familyMembers = [{
+  name: "Peter Madsen",
+  age: 52,
+  harColor: "blonde",
+  relation: "dad",
+  img: "dad.jpg"
+}, {
+  name: "Ane Madsen",
+  age: 51,
+  harColor: "brown",
+  relation: "mom",
+  img: "ane.jpg"
+}, {
+  name: "Rasmus Madsen",
+  age: 28,
+  harColor: "blonde",
+  relation: "brother",
+  img: "IMG_0526_kvadrat.jpg"
+}, {
+  name: "Mie Madsen",
+  age: 25,
+  harColor: "brown",
+  relation: "sister",
+  img: "mie.jpg"
+}, {
+  name: "Mads Madsen",
+  age: 18,
+  harColor: "dark",
+  relation: "brother",
+  img: "mads.jpg"
+}, {
+  name: "Jens Madsen",
+  age: 14,
+  harColor: "blonde",
+  relation: "uncle",
+  img: "jenspeter.jpg"
+}];
 
+appendPersons(familyMembers);
 /*
 Appends json data to the DOM
 */
@@ -75,35 +105,62 @@ function appendPersons(persons) {
 }
 
 /*
-Fetches json data from my headless cms
+Array of teachers
 */
-fetch("http://headlesscms.cederdorff.com/wp-json/wp/v2/posts?_embed&categories=2")
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(json) {
-    appendPosts(json);
-  });
-
-function getFeaturedImageUrl(post) {
-  let imageUrl = "";
-  if (post._embedded['wp:featuredmedia']) {
-    imageUrl = post._embedded['wp:featuredmedia'][0].source_url;
+let teachers = [{
+    name: "Birgitte Kirk Iversen",
+    initials: "bki",
+    mail: "bki@baaa.dk",
+    phone: "72286316",
+    address: "Sønderhøj 30, 8260 Viby J",
+    position: "Senior Lecturer",
+    department: "Multimedia Design",
+    img: "https://www.baaa.dk/CropUp/headshot/media/1524902/birgitte-kirk-iversen.jpg"
+  }, {
+    name: "Gertie Margrethe Kolding Jensen",
+    initials: "gkj",
+    mail: "gkj@baaa.dk",
+    phone: "72286349",
+    address: "Sønderhøj 30, 8260 Viby J",
+    position: "Senior Lecturer",
+    department: "Multimedia Design",
+    img: "https://www.eaaa.dk/CropUp/headshot/media/2046228/Gertie-Kolding.jpg"
+  }, {
+    name: "Kim Elkjær Marcher-Jepsen",
+    initials: "kije",
+    mail: "kije@baaa.dk",
+    phone: "7228 6325",
+    address: "Sønderhøj 30, 8260 Viby J",
+    position: "Lecturer",
+    department: "Multimedia Design",
+    img: "https://www.baaa.dk/CropUp/headshot/media/3124373/Kim-Elkjaer-Marcher-Jepsen.jpg"
+  },
+  {
+    name: "Rasmus Cederdorff",
+    initials: "race",
+    mail: "race@baaa.dk",
+    phone: "72286318",
+    address: "Sønderhøj 30, 8260 Viby J",
+    position: "Lecturer",
+    department: "Multimediedesigner & Professionsbachelor i digital konceptudvikling",
+    img: "http://eaaa.cederdorff.com/mdu-f18front/object_teachers_grid/img/race.jpg"
   }
-  return imageUrl;
-}
+];
 
-function appendPosts(posts) {
+appendTeachers(teachers);
+
+function appendTeachers(teachers) {
   let htmlTemplate = "";
-  for (let post of posts) {
-    console.log(post);
+  for (let teacher of teachers) {
+    console.log(teacher);
     htmlTemplate += `
     <article>
-      <img src="${getFeaturedImageUrl(post)}">
-      <h3>${post.title.rendered}</h3>
-      <p>${post.content.rendered}</p>
+      <img src="${teacher.img}">
+      <h3>${teacher.name}</h3>
+      <p>${teacher.position} <br><a href="mailto:${teacher.mail}">${teacher.mail}</a></p>
     </article>
      `;
   }
+  console.log(htmlTemplate);
   document.querySelector("#my-teachers").innerHTML = htmlTemplate;
 }
