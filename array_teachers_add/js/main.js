@@ -70,6 +70,7 @@ function createTeacher() {
     position: position
   };
 
+  // push the new object to the array
   teachers.push(newteacher);
 
   // reset grid

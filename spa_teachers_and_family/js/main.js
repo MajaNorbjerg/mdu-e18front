@@ -17,15 +17,6 @@ function showPage(pageId) {
   setActiveTab(pageId);
 }
 
-// set default page
-function setDefaultPage() {
-  let page = "home";
-  if (location.hash) {
-    page = location.hash.slice(1);
-  }
-  showPage(page);
-}
-
 // sets active tabbar/ menu item
 function setActiveTab(pageId) {
   let pages = document.querySelectorAll(".tabbar a");
@@ -37,6 +28,15 @@ function setActiveTab(pageId) {
     }
 
   }
+}
+
+// set default page
+function setDefaultPage() {
+  let page = "home";
+  if (location.hash) {
+    page = location.hash.slice(1);
+  }
+  showPage(page);
 }
 
 setDefaultPage();
