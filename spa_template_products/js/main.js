@@ -14,6 +14,7 @@ function hideAllPages() {
 function showPage(pageId) {
   hideAllPages();
   document.querySelector(`#${pageId}`).style.display = "block";
+  location.href = `#${pageId}`;
   setActiveTab(pageId);
 }
 
@@ -44,7 +45,7 @@ setDefaultPage();
 // =========== Product functionality =========== //
 
 let products = [
-  // to do 
+  // to do
 ];
 
 function appendProducts() {
