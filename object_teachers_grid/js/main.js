@@ -1,6 +1,6 @@
 "use strict";
 
-// declaring techer objects
+// declaring teacher objects
 
 // Birgitte
 let teacher1 = {
