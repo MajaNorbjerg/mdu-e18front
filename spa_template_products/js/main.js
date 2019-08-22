@@ -55,3 +55,7 @@ function appendProducts() {
 function addNewProduct() {
   // to do
 }
+
+function search(value) {
+  // to do
+}
