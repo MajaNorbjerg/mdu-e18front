@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Movies</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Movie Single Page Application">
+  <meta name="author" content="Rasmus Cederdorff">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
+</head>
+
+<body>
+  <!-- tabbar navigation -->
+  <nav class="tabbar">
+    <a href="#movies" onclick="showPage('movies')">Movies</a>
+    <a href="#genre" onclick="showPage('genre')">Genre</a>
+  </nav>
+
+  <!-- pages -->
+  <!-- home page -->
+  <section id="movies" class="page">
+    <header class="topbar">
+      <h2>Movies</h2>
+    </header>
+    <input type="search" placeholder="Search" onkeyup="search(this.value)">
+    <section id="movies-container"></section>
+  </section>
+
+  <!-- about page -->
+  <section id="genre" class="page">
+    <header class="topbar">
+      <h2>Movies By Genre</h2>
+    </header>
+    <select name="genre" onchange="genreSelected(this.value)">
+      <option value="">Select Genre</option>
+      <option value="animation">Animation</option>
+      <option value="adventure">Adventure</option>
+      <option value="comedy">Drama</option>
+      <option value="drama">Drama</option>
+      <option value="horror">Horror</option>
+      <option value="thriller">Thriller</option>
+    </select>
+  </section>
+
+  <!-- main js file -->
+  <script src="js/main.js"></script>
+</body>
+
+</html>
