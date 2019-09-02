@@ -110,13 +110,13 @@ h1 {
 }
 
 /* ---------- product styling ---------- */
-#movies-container img {
+.grid-container img {
   width: 100%;
   max-width: 250px;
   height: auto;
 }
 
-#movies-container article {
+.grid-container article {
   padding: 0.5em 0 2em;
 }
 

@@ -25,7 +25,7 @@
       <h2>Movies</h2>
     </header>
     <input type="search" placeholder="Search" onkeyup="search(this.value)">
-    <section id="movies-container"></section>
+    <section id="movies-container" class="grid-container"></section>
   </section>
 
   <!-- about page -->
@@ -33,15 +33,10 @@
     <header class="topbar">
       <h2>Movies By Genre</h2>
     </header>
-    <select name="genre" onchange="genreSelected(this.value)">
+    <select id="select-genre" name="genre" onchange="genreSelected(this.value)">
       <option value="">Select Genre</option>
-      <option value="animation">Animation</option>
-      <option value="adventure">Adventure</option>
-      <option value="comedy">Drama</option>
-      <option value="drama">Drama</option>
-      <option value="horror">Horror</option>
-      <option value="thriller">Thriller</option>
     </select>
+    <section id="movies-by-genre-container" class="grid-container"></section>
   </section>
 
   <!-- main js file -->

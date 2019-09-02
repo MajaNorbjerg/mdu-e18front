@@ -52,9 +52,10 @@ function getMovies() {
     .then(function(response) {
       return response.json();
     })
-    .then(function(movies) {
-      console.log(movies);
-      appendMovies(movies);
+    .then(function(json) {
+      console.log(json);
+      appendMovies(json);
+      movies = json;
     });
 }
 
@@ -85,7 +86,7 @@ function search(value) {
   for (let movie of movies) {
     let title = movie.title.rendered.toLowerCase();
     if (title.includes(searchQuery)) {
-      filteredMovies.push(product);
+      filteredMovies.push(movie);
     }
   }
   console.log(filteredMovies);
@@ -94,16 +95,56 @@ function search(value) {
 
 // fetch all genres / categories from WP
 function getGenres() {
-  // TODO:
+  fetch('http://movie-api.cederdorff.com/wp-json/wp/v2/categories')
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(categories) {
+      console.log(categories);
+      appendGenres(categories);
+    });
 }
+
+getGenres();
 
 // append all genres as select options (dropdown)
 function appendGenres(genres) {
-  // TODO:
+  let htmlTemplate = "";
+  for (let genre of genres) {
+    htmlTemplate += `
+      <option value="${genre.id}">${genre.name}</option>
+    `;
+  }
+
+  document.querySelector('#select-genre').innerHTML += htmlTemplate;
 }
 
 // genre selected event
 function genreSelected(genreId) {
   console.log(genreId);
-  // TODO: fetch and append by genre
+  fetch(`http://movie-api.cederdorff.com/wp-json/wp/v2/posts?_embed&categories=${genreId}`)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(movies) {
+      console.log(movies);
+      appendMoviesByGenre(movies);
+    });
+}
+
+function appendMoviesByGenre(movies) {
+  let htmlTemplate = "";
+
+  for (let movie of movies) {
+    htmlTemplate += `
+      <article>
+        <h2>${movie.title.rendered} (${movie.acf.year})</h2>
+        <img src="${movie.acf.img}">
+        <p>${movie.acf.description}</p>
+        <a href="${movie.acf.trailer}" target="_blank">Trailer</a>
+      </article>
+    `;
+  }
+
+  document.querySelector('#movies-by-genre-container').innerHTML = htmlTemplate;
 }
