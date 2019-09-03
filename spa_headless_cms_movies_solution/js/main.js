@@ -85,7 +85,7 @@ function appendMovies(movies) {
         <h2>${movie.title.rendered} (${movie.acf.year})</h2>
         <img src="${movie.acf.img}">
         <p>${movie.acf.description}</p>
-        <a href="${movie.acf.trailer}" target="_blank">Trailer</a>
+        <iframe src="${movie.acf.trailer}"></iframe>
       </article>
     `;
   }
@@ -133,7 +133,7 @@ function appendGenres(genres) {
   document.querySelector('#select-genre').innerHTML += htmlTemplate;
 }
 
-// genre selected event
+// genre selected event - fetch movies by selected category
 function genreSelected(genreId) {
   showLoader(true);
   console.log(genreId);
@@ -148,6 +148,7 @@ function genreSelected(genreId) {
     });
 }
 
+// append movies by genre
 function appendMoviesByGenre(moviesByGenre) {
   let htmlTemplate = "";
 
@@ -157,11 +158,12 @@ function appendMoviesByGenre(moviesByGenre) {
         <h2>${movie.title.rendered} (${movie.acf.year})</h2>
         <img src="${movie.acf.img}">
         <p>${movie.acf.description}</p>
-        <a href="${movie.acf.trailer}" target="_blank">Trailer</a>
+        <iframe src="${movie.acf.trailer}"></iframe>
       </article>
     `;
   }
 
+  // if no movies, display feedback to the user
   if (moviesByGenre.length === 0) {
     htmlTemplate = `
       <p>No Movies</p>
