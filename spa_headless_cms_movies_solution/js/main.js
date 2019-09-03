@@ -42,6 +42,17 @@ function setDefaultPage() {
 
 setDefaultPage();
 
+// =========== Loader functionality =========== //
+
+function showLoader(show) {
+  let loader = document.querySelector('#loader');
+  if (show) {
+    loader.classList.remove("hide");
+  } else {
+    loader.classList.add("hide");
+  }
+}
+
 // =========== Movie SPA functionality =========== //
 
 let movies = [];
@@ -56,6 +67,9 @@ function getMovies() {
       console.log(json);
       appendMovies(json);
       movies = json;
+      setTimeout(function() {
+        showLoader(false);
+      }, 200);
     });
 }
 
@@ -121,6 +135,7 @@ function appendGenres(genres) {
 
 // genre selected event
 function genreSelected(genreId) {
+  showLoader(true);
   console.log(genreId);
   fetch(`http://movie-api.cederdorff.com/wp-json/wp/v2/posts?_embed&categories=${genreId}`)
     .then(function(response) {
@@ -129,13 +144,14 @@ function genreSelected(genreId) {
     .then(function(movies) {
       console.log(movies);
       appendMoviesByGenre(movies);
+      showLoader(false);
     });
 }
 
-function appendMoviesByGenre(movies) {
+function appendMoviesByGenre(moviesByGenre) {
   let htmlTemplate = "";
 
-  for (let movie of movies) {
+  for (let movie of moviesByGenre) {
     htmlTemplate += `
       <article>
         <h2>${movie.title.rendered} (${movie.acf.year})</h2>
@@ -143,6 +159,12 @@ function appendMoviesByGenre(movies) {
         <p>${movie.acf.description}</p>
         <a href="${movie.acf.trailer}" target="_blank">Trailer</a>
       </article>
+    `;
+  }
+
+  if (moviesByGenre.length === 0) {
+    htmlTemplate = `
+      <p>No Movies</p>
     `;
   }
 
