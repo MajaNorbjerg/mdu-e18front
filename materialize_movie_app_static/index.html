@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movie App - Materialize</title>
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="css/main.css" type="text/css" rel="stylesheet" media="screen,projection" />
+</head>
+
+<body>
+  <div class="navbar-fixed">
+    <nav class="nav-extended">
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo center">Movie App</a>
+      </div>
+      <div class="nav-content">
+        <ul id="tabs" class="tabs">
+          <li class="tab col s3"><a href="#movies">Movies</a></li>
+          <li class="tab col s3"><a href="#genre">Genre</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <section id="movies" class="col s12">
+    <div class="container">
+      <div class="input-field col s12">
+        <input id="search" type="search" placeholder="Search">
+      </div>
+
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://m.media-amazon.com/images/M/MV5BMTQ1MjQwMTE5OF5BMl5BanBnXkFtZTgwNjk3MTcyMDE@._V1_SY1000_CR0,0,674,1000_AL_.jpg">
+            </div>
+            <div class="card-content">
+              <span class="card-title">Frozen (2013)</span>
+              <p>When the newly-crowned Queen Elsa accidentally uses her power to turn things into ice to curse her home in infinite winter, her sister Anna teams up with a mountain man, his playful reindeer, and a snowman to change the weather
+                condition.</p>
+            </div>
+            <div class="card-action">
+              <a href="https://www.youtube.com/watch?v=TbQm5doF_Uc" target="_blank">Watch the trailer</a>
+            </div>
+
+          </div>
+        </div>
+        <div class="col s12 m6">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://m.media-amazon.com/images/M/MV5BZjI5N2FkMDQtYjk4Ni00N2U5LTlkZGQtMzY5ZTcwNTdjZWUyXkEyXkFqcGdeQXVyNjg3MDMxNzU@._V1_SX640_CR0,0,640,999_AL_.jpg">
+            </div>
+            <div class="card-content">
+              <span class="card-title">Don’t Let Go (2019)</span>
+              <p>After a man’s family dies in what appears to be a murder, he gets a phone call from one of the dead, his niece. He’s not sure if she’s a ghost or if he’s going mad, but as it turns out, he’s not.</p>
+            </div>
+            <div class="card-action">
+              <a href="https://youtu.be/TUrSZLuGfEA" target="_blank">Watch the trailer</a>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m6">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://m.media-amazon.com/images/M/MV5BMjIwMjE1Nzc4NV5BMl5BanBnXkFtZTgwNDg4OTA1NzM@._V1_SY1000_CR0,0,674,1000_AL_.jpg">
+            </div>
+            <div class="card-content">
+              <span class="card-title">Lion King (2019)</span>
+              <p>After the murder of his father, a young lion prince flees his kingdom only to learn the true meaning of responsibility and bravery.s going mad, but as it turns out, he’s not.</p>
+            </div>
+            <div class="card-action">
+              <a href="https://youtu.be/Raf9bVk75s8" target="_blank">Watch the trailer</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="genre" class="col s12">
+    <div class="container">
+      <div class="input-field col s12">
+        <select>
+          <option value="" disabled selected>Select Genre</option>
+          <option value="5">Adventure</option>
+          <option value="4">Animation</option>
+          <option value="3">Comedy</option>
+          <option value="2">Drama</option>
+          <option value="1">Fantasy</option>
+          <option value="6">Horror</option>
+        </select>
+      </div>
+
+      <div class="row">
+
+      </div>
+    </div>
+  </section>
+  <!--Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
