@@ -135,17 +135,21 @@ function appendGenres(genres) {
 
 // genre selected event - fetch movies by selected category
 function genreSelected(genreId) {
-  showLoader(true);
-  console.log(genreId);
-  fetch(`http://movie-api.cederdorff.com/wp-json/wp/v2/posts?_embed&categories=${genreId}`)
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(movies) {
-      console.log(movies);
-      appendMoviesByGenre(movies);
-      showLoader(false);
-    });
+  console.log(`Genre ID: ${genreId}`);
+  if (genreId) {
+    showLoader(true);
+    fetch(`http://movie-api.cederdorff.com/wp-json/wp/v2/posts?_embed&categories=${genreId}`)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(movies) {
+        console.log(movies);
+        appendMoviesByGenre(movies);
+        showLoader(false);
+      });
+  } else {
+    // create feedback
+  }
 }
 
 // append movies by genre
