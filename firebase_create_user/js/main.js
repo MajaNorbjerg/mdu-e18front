@@ -2,7 +2,7 @@
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCMyBxTqrwDePj6kSVgD5rVsEQ-66FCoCk",
+  apiKey: "YOUR_API_KEY",
   authDomain: "mdu-e18front.firebaseapp.com",
   databaseURL: "https://mdu-e18front.firebaseio.com",
   projectId: "mdu-e18front",
