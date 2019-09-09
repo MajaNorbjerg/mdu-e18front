@@ -2,7 +2,7 @@
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
+  apiKey: "AIzaSyCMyBxTqrwDePj6kSVgD5rVsEQ-66FCoCk",
   authDomain: "mdu-e18front.firebaseapp.com",
   databaseURL: "https://mdu-e18front.firebaseio.com",
   projectId: "mdu-e18front",
@@ -19,6 +19,7 @@ const userRef = db.collection("users");
 // watch the database ref for changes
 userRef.onSnapshot(function(snapshotData) {
   let users = snapshotData.docs;
+  console.log(users);
   appendUsers(users);
 });
 

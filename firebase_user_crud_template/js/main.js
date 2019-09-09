@@ -2,7 +2,7 @@
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
+  apiKey: "AIzaSyCMyBxTqrwDePj6kSVgD5rVsEQ-66FCoCk",
   authDomain: "mdu-e18front.firebaseapp.com",
   databaseURL: "https://mdu-e18front.firebaseio.com",
   projectId: "mdu-e18front",
@@ -15,6 +15,8 @@ firebase.initializeApp(firebaseConfig);
 
 const db = firebase.firestore();
 const userRef = db.collection("users");
+
+let selectedUserID = "";
 
 // ========== READ ==========
 // watch the database ref for changes
@@ -33,6 +35,8 @@ function appendUsers(users) {
     <article>
       <h2>${user.data().name}</h2>
       <p><a href="mailto:${user.data().mail}">${user.data().mail}</a></p>
+      <button onclick="deleteUser('${user.id}')">DELETE</button>
+      <button onclick="selectUser('${user.id}', '${user.data().name}', '${user.data().mail}')">UPDATE</button>
     </article>
     `;
   }
@@ -58,9 +62,28 @@ function createUser() {
 
 // ========== UPDATE ==========
 
-function selectUser(id, name, mail) {}
+function selectUser(id, name, mail) {
+  console.log(id);
+  selectedUserID = id;
+  let nameInput = document.querySelector('#name-update');
+  let mailInput = document.querySelector('#mail-update');
+  nameInput.value = name;
+  mailInput.value = mail;
 
-function updateUser() {}
+}
+
+function updateUser() {
+  let nameInput = document.querySelector('#name-update');
+  let mailInput = document.querySelector('#mail-update');
+
+  let userToUpdate = {
+    name: nameInput.value,
+    mail: mailInput.value
+  };
+  userRef.doc(selectedUserID).set(userToUpdate);
+}
 
 // ========== DELETE ==========
-function deleteUser(id) {}
+function deleteUser(id) {
+  userRef.doc(id).delete();
+}
