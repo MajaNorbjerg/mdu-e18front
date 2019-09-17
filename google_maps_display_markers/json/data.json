@@ -1,0 +1,16 @@
+[{
+    "place": "Erhvervsakademi Aarhus",
+    "address":"Ringvej Syd 104, 8260 Viby",
+    "lat": 56.1171556,
+    "lng": 10.1477419
+  },{
+      "place": "Viby J Station",
+      "address":"Sønderhøj 5, 8000 Aarhus",
+      "lat": 56.1203315,
+      "lng": 10.1589321
+    },{
+        "place": "ARoS Aarhus Art Museum",
+        "address":"Aros Allé 2, 8000 Aarhus",
+        "lat": 56.153919,
+        "lng": 10.1975273
+      }]
