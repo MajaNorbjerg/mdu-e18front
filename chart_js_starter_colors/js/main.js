@@ -1,32 +1,25 @@
-/*
-For more info about chart.js visit the website -
-Chart.js | Open source HTML5 Charts for your website
-https://www.chartjs.org
-*/
-let chartContainer = document.getElementById('chartContainer').getContext('2d');
+"use strict";
+// grabbing the DOM element chartContainer
+let chartContainer = document.querySelector('#chartContainer');
+
+// declaration of data
+let labels = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'];
+let data = [12, 19, 3, 5, 2, 3];
+
+// declaration of colors
+let backgroundColors = ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)'];
+let borderColors = ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)'];
+
+// create a new chart
 let chart = new Chart(chartContainer, {
   type: 'bar',
   data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    labels: labels,
     datasets: [{
       label: 'Number of Votes',
-      data: [12, 19, 3, 5, 2, 3],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)'
-      ],
-      borderColor: [
-        'rgba(255, 99, 132, 1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)'
-      ],
+      data: data,
+      backgroundColor: backgroundColors,
+      borderColor: borderColors,
       borderWidth: 1
     }]
   },

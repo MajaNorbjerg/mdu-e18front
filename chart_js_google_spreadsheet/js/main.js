@@ -31,7 +31,7 @@ function appendChart(data) {
   // generate chart
   let chart = document.getElementById('chart');
   let myDoughnutChart = new Chart(chart, {
-    type: 'doughnut',
+    type: 'bubble',
     data: {
       datasets: [{
         data: numbers,
