@@ -18,14 +18,14 @@ function appendChart(data) {
   console.log(data);
 
   // prepare data
-  let grades = [];
+  let marks = [];
   let numbers = [];
   let colors = [];
 
-  for (let grade of data) {
-    grades.push(grade['gsx$grade']['$t']);
-    numbers.push(grade['gsx$number']['$t']);
-    colors.push(grade['gsx$color']['$t']);
+  for (let mark of data) {
+    marks.push(`${mark['gsx$mark']['$t']}: ${mark['gsx$explanation']['$t']}`);
+    numbers.push(mark['gsx$number']['$t']);
+    colors.push(mark['gsx$color']['$t']);
   }
 
   // generate chart
@@ -37,7 +37,7 @@ function appendChart(data) {
         data: numbers,
         backgroundColor: colors
       }],
-      labels: grades
+      labels: marks
     }
   });
 }
