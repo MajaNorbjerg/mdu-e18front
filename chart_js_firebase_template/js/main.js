@@ -5,7 +5,7 @@ const _dataRef = _db.collection("sustainabilityData");
 let _sustainabilityData;
 
 // listen for changes on _dataRef
-_dataRef.orderBy("year").onSnapshot(function(snapshotData) {
+_dataRef.where('region', '==', 'north').orderBy("year").onSnapshot(function(snapshotData) {
   _sustainabilityData = []; // reset _sustainabilityData
   for (let doc of snapshotData.docs) { // loop trough the docs
     let docData = doc.data(); // save the doc data in the variable docData
