@@ -14,16 +14,29 @@ _dataRef.where('region', '==', 'north').orderBy("year").onSnapshot(function(snap
   }
   appendCows(_sustainabilityData); // call appendCows with _sustainabilityData as function argument
   appendCarbonFootprint(_sustainabilityData); //call appendCarbonFootprint with _sustainabilityData as function argument
+  appendMilkProduction(_sustainabilityData); //call appendMilkProduction with _sustainabilityData as function argument
 });
 
 function appendCows(sustainabilityData) {
   console.log(sustainabilityData);
   // TODO: prepare data for the chart
   // TODO: create the chart with options
+  let chart = document.querySelector('#cows');
+  // let myDoughnutChart = new Chart(chart, {...}
 }
 
 function appendCarbonFootprint(sustainabilityData) {
   console.log(sustainabilityData);
   // TODO: prepare data for the chart
   // TODO: create the chart with options
+  let chart = document.querySelector('#carbonFootprint');
+  // let myDoughnutChart = new Chart(chart, {...}
+}
+
+function appendMilkProduction(sustainabilityData) {
+  console.log(sustainabilityData);
+  // TODO: prepare data for the chart
+  // TODO: create the chart with options
+  let chart = document.querySelector('#milkProduction');
+  // let myDoughnutChart = new Chart(chart, {...}
 }
