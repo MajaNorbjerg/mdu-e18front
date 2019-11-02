@@ -13,14 +13,3 @@ h1 {
   font-weight: 300;
   letter-spacing: 3px;
 }
-
-.grid-container {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  grid-gap: 10px;
-  padding: 10px;
-}
-.grid-container > .grid-item {
-  text-align: center;
-  padding: 20px 0;
-}

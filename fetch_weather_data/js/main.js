@@ -4,11 +4,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // url: http://api.apixu.com/v1/current.json?key=19474b792e92493e809105720180110&q=Aarhus
 
-  const url = 'http://api.apixu.com/v1/current.json';
-  const key = '19474b792e92493e809105720180110';
+  const url = 'http://api.weatherstack.com/current';
+  const key = 'f104663606762aadb9858a8367d0d156';
   let query = 'Aarhus';
 
-  fetch(`${url}?key=${key}&q=${query}`)
+  fetch(`${url}?access_key=${key}&query=${query}`)
     .then(function(response) {
       return response.json();
     })
@@ -16,11 +16,10 @@ document.addEventListener("DOMContentLoaded", function() {
       console.log(json);
       let current = json.current;
       document.querySelector('#current-condition').innerHTML = `
-        <h2>${current.condition.text}</h2>
-        <img src='${current.condition.icon}'>
-        <p>${current.temp_c} &#8451</p>
-        <p>${current.temp_f} &#8457</p>
-        <p>Feels like: ${current.feelslike_c} &#8451 / ${current.feelslike_f}</p>
+        <h2>${current.weather_descriptions}</h2>
+        <img src='${current.weather_icons}'>
+        <p>${current.temperature} &#8451</p>
+        <p>Feels like: ${current.feelslike} &#8451</p>
       `;
     });
 
