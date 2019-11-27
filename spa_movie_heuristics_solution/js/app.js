@@ -122,6 +122,7 @@ function initMovieRef() {
       if (_movies) {
         appendMovies(_movies); // refresh movies when user data changes
       }
+      showLoader(false);
     }
   });
 
@@ -146,27 +147,28 @@ function appendMovies(movies) {
         <h2>${movie.title} (${movie.year})</h2>
         <img src="${movie.img}">
         <p>${movie.description}</p>
-        ${generateFavBtn(movie.id)}
+        ${generateFavMovieButton(movie.id)}
       </article>
     `;
   }
   document.querySelector('#movie-container').innerHTML = htmlTemplate;
-  showLoader(false);
 }
 
-function generateFavBtn(movieId) {
+function generateFavMovieButton(movieId) {
+  let btnTemplate = `
+    <button onclick="addToFavourites('${movieId}')">Add to favourites</button>`;
   if (_currentUser.favMovies.includes(movieId)) {
-    return `<button onclick="removeFromFavourites('${movieId}')" class="rm">Remove from favourites</button>`;
-  } else {
-    return `<button onclick="addToFavourites('${movieId}')">Add to favourites</button>`;
+    btnTemplate = `
+      <button onclick="removeFromFavourites('${movieId}')" class="rm">Remove from favourites</button>`;
   }
+  return btnTemplate;
 }
 
 // append favourite movies to the DOM
 async function appendFavMovies(favMovieIds) {
   let htmlTemplate = "";
   if (favMovieIds.length === 0) {
-    htmlTemplate = "<p>Please, add movies.</p>";
+    htmlTemplate = "<p>Please, add movies to favourites.</p>";
   } else {
     for (let movieId of favMovieIds) {
       await _movieRef.doc(movieId).get().then(function(doc) {
